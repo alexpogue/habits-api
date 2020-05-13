@@ -21,7 +21,7 @@ export default class HabitApi {
   };
 
   // Posts a single goal to the goalAPI, returns with the new goal array.
-  async postHabitGoal() {
+  async postHabitGoal(data) {
     await this.apiCaller.post("goal/", { name: data });
     const newGoalArray = await this.apiCaller("goal/");
     return newGoalArray.data.data;
