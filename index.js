@@ -26,4 +26,18 @@ export default class HabitApi {
     const newGoalArray = await this.apiCaller("goal/");
     return newGoalArray.data.data;
   };
+
+  // Updates/puts a single goal if invoked with a new name, and the id of goal you wish to change.
+  async putHabitGoal(data, id) {
+    await this.apiCaller.put(`goal/${id}`, { name: data });
+    const newGoalArray = await this.apiCaller("goal/");
+    return newGoalArray.data.data;
+  };
+
+  //Deletes a goal given a specific Id from the database.
+  async deleteHabitGoal(id) {
+    await this.apiCaller.delete(`goal/${id}`)
+    const newGoalArray = await this.apiCaller("goal/");
+    return newGoalArray.data.data;
+  };
 }
