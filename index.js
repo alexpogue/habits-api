@@ -9,33 +9,33 @@ export default class HabitApi {
   };
 
   // Gets all goals from the goal api.
-  async getAllHabitGoals() {
+  async getAllGoals() {
     const result = await this.apiCaller("goal/");
     return result.data.data;
   };
 
   // Gets a goal with matching goalId if invoked with a goalId.
-  async getHabitGoal() {
+  async getGoal() {
     const result = await this.apiCaller("goal/" + goalId);
     return result.data.data;
   };
 
   // Posts a single goal to the goalAPI, returns with the new goal array.
-  async postHabitGoal(data) {
+  async postGoal(data) {
     await this.apiCaller.post("goal/", { name: data });
     const newGoalArray = await this.apiCaller("goal/");
     return newGoalArray.data.data;
   };
 
   // Updates/puts a single goal if invoked with a new name, and the id of goal you wish to change.
-  async putHabitGoal(data, id) {
+  async putGoal(data, id) {
     await this.apiCaller.put(`goal/${id}`, { name: data });
     const newGoalArray = await this.apiCaller("goal/");
     return newGoalArray.data.data;
   };
 
   //Deletes a goal given a specific Id from the database.
-  async deleteHabitGoal(id) {
+  async deleteGoal(id) {
     await this.apiCaller.delete(`goal/${id}`)
     const newGoalArray = await this.apiCaller("goal/");
     return newGoalArray.data.data;
